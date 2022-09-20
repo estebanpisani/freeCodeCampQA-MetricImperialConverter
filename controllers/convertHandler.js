@@ -1,14 +1,12 @@
 function ConvertHandler() {
 
   this.getNum = function (input) {
-    let result;
-
+    let result=input;
     return result;
   };
 
   this.getUnit = function (input) {
-    let result;
-
+    let result=input;
     return result;
   };
 
@@ -18,8 +16,7 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function (unit) {
-    let result;
-
+    let result=unit;
     return result;
   };
 
@@ -52,8 +49,7 @@ function ConvertHandler() {
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result;
-
+    let result= `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
     return result;
   };
 
