@@ -25,7 +25,7 @@ suite('Unit Tests', function () {
             done();
         });
         //TODO convertHandler should correctly read a fractional input with a decimal.
-        test('Read fractional input', function (done) {
+        test('Read fractional input w/decimal', function (done) {
             let input = '2/7.5';
             assert.equal(convertHandler.getNum(input), 2/7.5);
             done();
