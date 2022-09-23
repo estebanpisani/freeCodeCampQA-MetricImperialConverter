@@ -1,13 +1,42 @@
+function fractionHandler(input) {
+  let numbers = input.split('/');
+  if (numbers.length < 2) {
+    return null;
+  } else if (numbers.length > 2) {
+    return false;
+  }
+  return numbers;
+}
+
 function ConvertHandler() {
 
   this.getNum = function (input) {
-    let result = parseFloat(input);
-    return result || 1;
+    let result;
+    if (fractionHandler(input) === null) {
+      result = parseFloat(input) || 1;
+    } else if (!fractionHandler(input)) {
+      result = undefined;
+    } else {
+      result = parseFloat(fractionHandler(input)[0])/parseFloat(fractionHandler(input)[1]);
+    }
+    // console.log(result);
+    return result;
   };
 
   this.getUnit = function (input) {
-    let result = input.replace(parseFloat(input).toString(), '').toLowerCase();
-    return result;
+    let result;
+    let inputSplit = fractionHandler(input);
+    if (inputSplit){
+      result = inputSplit[1].replace(parseFloat(inputSplit[1]).toString(), '').toLowerCase();
+    }
+    else {
+      result = input.replace(parseFloat(input).toString(), '').toLowerCase();
+    }
+    if (result == "km" || result == 'gal' || result == 'l' || result == 'lbs' || result == 'kg' || result == 'mi' || result == 'km'){
+      return result;
+    } else {
+      return undefined;
+    }
   };
 
   this.getReturnUnit = function (initUnit) {
@@ -59,7 +88,7 @@ function ConvertHandler() {
         result = "kilometers"
         break;
       default:
-        result = undefined;        
+        result = undefined;
     }
     return result;
   };

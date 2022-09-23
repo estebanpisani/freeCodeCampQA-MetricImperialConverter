@@ -18,19 +18,19 @@ suite('Unit Tests', function () {
             assert.equal(convertHandler.getNum(input), 25.7);
             done();
         });
-        //TODO convertHandler should correctly read a fractional input.
+        // convertHandler should correctly read a fractional input.
         test('Read fractional input', function (done) {
             let input = '2/7';
             assert.equal(convertHandler.getNum(input), 2/7);
             done();
         });
-        //TODO convertHandler should correctly read a fractional input with a decimal.
+        // convertHandler should correctly read a fractional input with a decimal.
         test('Read fractional input w/decimal', function (done) {
             let input = '2/7.5';
             assert.equal(convertHandler.getNum(input), 2/7.5);
             done();
         });
-        //TODO convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).
+        // convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).
         test('Error on a double-fraction', function (done) {
             let input = '3/2/3';
             assert.equal(convertHandler.getNum(input), null);
@@ -43,14 +43,35 @@ suite('Unit Tests', function () {
             done();
         });
     });
+    suite("Function getUnit(input)", function () {
+        //TODO convertHandler should correctly read each valid input unit.
+        test('Read each valid input unit', function (done) {
+            let input = '257km';
+            assert.equal(convertHandler.getNum(input), 257);
+            done();
+        });
+        //TODO convertHandler should correctly return an error for an invalid input unit.
+        test('Error for an invalid input unit', function (done) {
+            let input = '25.7km';
+            assert.equal(convertHandler.getNum(input), 25.7);
+            done();
+        });
+        //TODO convertHandler should return the correct return unit for each valid input unit.
+        test('Return correct return unit for each valid input unit', function (done) {
+            let input = '2/7';
+            assert.equal(convertHandler.getNum(input), 2/7);
+            done();
+        });
+    });
+    
+
+
 
 });
 
 
 
-// convertHandler should correctly read each valid input unit.
-// convertHandler should correctly return an error for an invalid input unit.
-// convertHandler should return the correct return unit for each valid input unit.
+
 // convertHandler should correctly return the spelled-out string unit for each valid input unit.
 // convertHandler should correctly convert gal to L.
 // convertHandler should correctly convert L to gal.
