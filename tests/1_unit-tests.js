@@ -44,22 +44,42 @@ suite('Unit Tests', function () {
         });
     });
     suite("Function getUnit(input)", function () {
-        //TODO convertHandler should correctly read each valid input unit.
+        // convertHandler should correctly read each valid input unit.
         test('Read each valid input unit', function (done) {
-            let input = '257km';
-            assert.equal(convertHandler.getNum(input), 257);
+            let inputKm = '257km';
+            let inputL = '257l';
+            let inputLbs = '257lbs';
+            let inputGal = '257gal';
+            let inputKg = '257kg';
+            let inputMi = '257mi';
+            assert.equal(convertHandler.getUnit(inputKm), 'km');
+            assert.equal(convertHandler.getUnit(inputMi), 'mi');
+            assert.equal(convertHandler.getUnit(inputL), 'l');
+            assert.equal(convertHandler.getUnit(inputGal), 'gal');
+            assert.equal(convertHandler.getUnit(inputLbs), 'lbs');
+            assert.equal(convertHandler.getUnit(inputKg), 'kg');
             done();
         });
-        //TODO convertHandler should correctly return an error for an invalid input unit.
+        // convertHandler should correctly return an error for an invalid input unit.
         test('Error for an invalid input unit', function (done) {
-            let input = '25.7km';
-            assert.equal(convertHandler.getNum(input), 25.7);
+            let input = '25.7hello';
+            assert.equal(convertHandler.getUnit(input), null);
             done();
         });
-        //TODO convertHandler should return the correct return unit for each valid input unit.
+        // convertHandler should return the correct return unit for each valid input unit.
         test('Return correct return unit for each valid input unit', function (done) {
-            let input = '2/7';
-            assert.equal(convertHandler.getNum(input), 2/7);
+            let inputKm = '257km';
+            let inputL = '257l';
+            let inputLbs = '257lbs';
+            let inputGal = '257gal';
+            let inputKg = '257kg';
+            let inputMi = '257mi';
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputKm)), 'mi');
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputMi)), 'km');
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputL)), 'gal');
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputGal)), 'l');
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputLbs)), 'kg');
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputKg)), 'lbs');
             done();
         });
     });

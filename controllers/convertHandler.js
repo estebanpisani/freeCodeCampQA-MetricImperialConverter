@@ -35,7 +35,7 @@ function ConvertHandler() {
     if (result == "km" || result == 'gal' || result == 'l' || result == 'lbs' || result == 'kg' || result == 'mi' || result == 'km'){
       return result;
     } else {
-      return undefined;
+      return null;
     }
   };
 
