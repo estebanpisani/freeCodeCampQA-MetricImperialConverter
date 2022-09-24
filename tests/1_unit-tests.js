@@ -102,12 +102,40 @@ suite('Unit Tests', function () {
     });
     suite("Function convert", function () {
         // convertHandler should correctly convert gal to L.
-        test('convert gal to L', function (done){
+        test('Convert gal to L', function (done){
+            let inputGal = 1;
+            assert.equal(convertHandler.convert(inputGal, 'gal'), 3.78541);
+            done();
         });
         // convertHandler should correctly convert L to gal.
+        test('Convert L to gal', function (done){
+            let inputL = 1;
+            assert.equal(convertHandler.convert(inputL, 'l'), 0.26417);
+            done();
+        });
         // convertHandler should correctly convert mi to km.
+        test('Convert mi to km', function (done){
+            let inputMi = 1;
+            assert.equal(convertHandler.convert(inputMi, 'mi'), 1.60934);
+            done();
+        });
         // convertHandler should correctly convert km to mi.
+        test('Convert km to mi', function (done){
+            let inputKm = 1;
+            assert.equal(convertHandler.convert(inputKm, 'km'), 0.62137);
+            done();
+        });
         // convertHandler should correctly convert lbs to kg.
+        test('Convert lbs to kg', function (done){
+            let inputLbs = 1;
+            assert.equal(convertHandler.convert(inputLbs, 'lbs'), 0.45359);
+            done();
+        });
         // convertHandler should correctly convert kg to lbs.
+        test('Convert kg to lbs', function (done){
+            let inputKg = 1;
+            assert.equal(convertHandler.convert(inputKg, 'kg'), 2.20462);
+            done();
+        });
     });
 });

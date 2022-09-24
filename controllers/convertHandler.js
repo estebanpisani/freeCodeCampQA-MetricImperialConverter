@@ -100,22 +100,22 @@ function ConvertHandler() {
     let result;
     switch (initUnit) {
       case 'l':
-        result = (initNum / galToL).toFixed(5)
+        result = (initNum / galToL).toFixed(5);
         break;
       case 'gal':
-        result = (initNum * galToL).toFixed(5)
+        result = (initNum * galToL).toFixed(5);
         break;
       case 'lbs':
-        result = (initNum * lbsToKg).toFixed(5)
+        result = (initNum * lbsToKg).toFixed(5);
         break;
       case 'kg':
-        result = (initNum / lbsToKg).toFixed(5)
+        result = (initNum / lbsToKg).toFixed(5);
         break;
       case 'mi':
-        result = (initNum * miToKm).toFixed(5)
+        result = (initNum * miToKm).toFixed(5);
         break;
       case 'km':
-        result = (initNum / miToKm).toFixed(5)
+        result = (initNum / miToKm).toFixed(5);
         break;
       default:
         result = undefined;
