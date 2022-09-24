@@ -5,7 +5,7 @@ const ConvertHandler = require('../controllers/convertHandler.js');
 let convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function () {
-    suite("Function getNum(input)", function () {
+    suite("Function getNum", function () {
         // convertHandler should correctly read a whole number input.
         test('Read whole number input', function (done) {
             let input = '257km';
@@ -21,13 +21,13 @@ suite('Unit Tests', function () {
         // convertHandler should correctly read a fractional input.
         test('Read fractional input', function (done) {
             let input = '2/7';
-            assert.equal(convertHandler.getNum(input), 2/7);
+            assert.equal(convertHandler.getNum(input), 2 / 7);
             done();
         });
         // convertHandler should correctly read a fractional input with a decimal.
         test('Read fractional input w/decimal', function (done) {
             let input = '2/7.5';
-            assert.equal(convertHandler.getNum(input), 2/7.5);
+            assert.equal(convertHandler.getNum(input), 2 / 7.5);
             done();
         });
         // convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).
@@ -43,7 +43,7 @@ suite('Unit Tests', function () {
             done();
         });
     });
-    suite("Function getUnit(input)", function () {
+    suite("Function getUnit, returnUnit & spellOutUnit", function () {
         // convertHandler should correctly read each valid input unit.
         test('Read each valid input unit', function (done) {
             let inputKm = '257km';
@@ -82,20 +82,32 @@ suite('Unit Tests', function () {
             assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputKg)), 'lbs');
             done();
         });
+        // convertHandler should correctly return the spelled-out string unit for each valid input unit.
+        test('Return the spelled-out string unit for each valid input unit', function (done) {
+            let inputKm = 'km';
+            let inputL = 'l';
+            let inputLbs = 'lbs';
+            let inputGal = 'gal';
+            let inputKg = 'kg';
+            let inputMi = 'mi';
+
+            assert.equal(convertHandler.spellOutUnit(inputKm), 'kilometers');
+            assert.equal(convertHandler.spellOutUnit(inputL), 'liters');
+            assert.equal(convertHandler.spellOutUnit(inputLbs), 'pounds');
+            assert.equal(convertHandler.spellOutUnit(inputGal), 'gallons');
+            assert.equal(convertHandler.spellOutUnit(inputKg), 'kilograms');
+            assert.equal(convertHandler.spellOutUnit(inputMi), 'miles');
+            done();
+        });
     });
-    
-
-
-
+    suite("Function convert", function () {
+        // convertHandler should correctly convert gal to L.
+        test('convert gal to L', function (done){
+        });
+        // convertHandler should correctly convert L to gal.
+        // convertHandler should correctly convert mi to km.
+        // convertHandler should correctly convert km to mi.
+        // convertHandler should correctly convert lbs to kg.
+        // convertHandler should correctly convert kg to lbs.
+    });
 });
-
-
-
-
-// convertHandler should correctly return the spelled-out string unit for each valid input unit.
-// convertHandler should correctly convert gal to L.
-// convertHandler should correctly convert L to gal.
-// convertHandler should correctly convert mi to km.
-// convertHandler should correctly convert km to mi.
-// convertHandler should correctly convert lbs to kg.
-// convertHandler should correctly convert kg to lbs.
