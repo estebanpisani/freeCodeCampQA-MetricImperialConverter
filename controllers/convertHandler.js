@@ -28,11 +28,17 @@ function ConvertHandler() {
     let inputSplit = fractionHandler(input);
     if (inputSplit){
       result = inputSplit[1].replace(parseFloat(inputSplit[1]).toString(), '').toLowerCase();
+      if(result==='l'){
+        result = 'L';
+      }
     }
     else {
       result = input.replace(parseFloat(input).toString(), '').toLowerCase();
+      if(result==='l'){
+        result = 'L';
+      }
     }
-    if (result == "km" || result == 'gal' || result == 'l' || result == 'lbs' || result == 'kg' || result == 'mi' || result == 'km'){
+    if (result == "km" || result == 'gal' || result == 'L' || result == 'lbs' || result == 'kg' || result == 'mi' || result == 'km'){
       return result;
     } else {
       return null;
@@ -42,11 +48,11 @@ function ConvertHandler() {
   this.getReturnUnit = function (initUnit) {
     let result;
     switch (initUnit) {
-      case 'l':
+      case 'L':
         result = "gal";
         break;
       case 'gal':
-        result = "l";
+        result = "L";
         break;
       case 'lbs':
         result = "kg";
@@ -69,7 +75,7 @@ function ConvertHandler() {
   this.spellOutUnit = function (unit) {
     let result;
     switch (unit) {
-      case 'l':
+      case 'L':
         result = "liters";
         break;
       case 'gal':
@@ -99,7 +105,7 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     let result;
     switch (initUnit) {
-      case 'l':
+      case 'L':
         result = (initNum / galToL).toFixed(5);
         break;
       case 'gal':

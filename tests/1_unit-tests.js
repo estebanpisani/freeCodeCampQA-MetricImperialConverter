@@ -54,7 +54,7 @@ suite('Unit Tests', function () {
             let inputMi = '257mi';
             assert.equal(convertHandler.getUnit(inputKm), 'km');
             assert.equal(convertHandler.getUnit(inputMi), 'mi');
-            assert.equal(convertHandler.getUnit(inputL), 'l');
+            assert.equal(convertHandler.getUnit(inputL), 'L');
             assert.equal(convertHandler.getUnit(inputGal), 'gal');
             assert.equal(convertHandler.getUnit(inputLbs), 'lbs');
             assert.equal(convertHandler.getUnit(inputKg), 'kg');
@@ -77,7 +77,7 @@ suite('Unit Tests', function () {
             assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputKm)), 'mi');
             assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputMi)), 'km');
             assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputL)), 'gal');
-            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputGal)), 'l');
+            assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputGal)), 'L');
             assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputLbs)), 'kg');
             assert.equal(convertHandler.getReturnUnit(convertHandler.getUnit(inputKg)), 'lbs');
             done();
