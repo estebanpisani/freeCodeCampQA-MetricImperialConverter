@@ -85,7 +85,7 @@ suite('Unit Tests', function () {
         // convertHandler should correctly return the spelled-out string unit for each valid input unit.
         test('Return the spelled-out string unit for each valid input unit', function (done) {
             let inputKm = 'km';
-            let inputL = 'l';
+            let inputL = 'L';
             let inputLbs = 'lbs';
             let inputGal = 'gal';
             let inputKg = 'kg';
@@ -110,7 +110,7 @@ suite('Unit Tests', function () {
         // convertHandler should correctly convert L to gal.
         test('Convert L to gal', function (done){
             let inputL = 1;
-            assert.equal(convertHandler.convert(inputL, 'l'), 0.26417);
+            assert.equal(convertHandler.convert(inputL, 'L'), 0.26417);
             done();
         });
         // convertHandler should correctly convert mi to km.
