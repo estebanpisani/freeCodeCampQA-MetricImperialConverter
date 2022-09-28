@@ -26,6 +26,7 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     let result;
     let inputSplit = fractionHandler(input);
+    console.log('split',inputSplit);
     if (inputSplit){
       result = inputSplit[1].replace(parseFloat(inputSplit[1]).toString(), '').toLowerCase();
       if(result==='l'){
@@ -34,6 +35,7 @@ function ConvertHandler() {
     }
     else {
       result = input.replace(parseFloat(input).toString(), '').toLowerCase();
+      console.log('result' ,result);
       if(result==='l'){
         result = 'L';
       }
