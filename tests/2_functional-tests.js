@@ -23,8 +23,50 @@ suite('Functional Tests', function () {
                 });
         });
         // Convert an invalid input such as 32g: GET request to /api/convert.
+        test('Convert an invalid input such as 32g', function (done) {
+            chai
+                .request(server)
+                .get('/api/convert?input=32g')
+                .end(function (err, res) {
+                    assert.equal(res.statusCode, 200);
+                    assert.equal(res.body.initUnit, undefined);
+                    done();
+                });
+        });
         // Convert an invalid number such as 3/7.2/4kg: GET request to /api/convert.
+        test('Convert an invalid number such as 3/7.2/4kg', function (done) {
+            chai
+                .request(server)
+                .get('/api/convert?input=3/7.2/4kg')
+                .end(function (err, res) {
+                    assert.equal(res.statusCode, 200);
+                    assert.equal(res.body.initNum, undefined);
+                    done();
+                });
+        });
         // Convert an invalid number AND unit such as 3/7.2/4kilomegagram: GET request to /api/convert.
+        test('Convert an invalid number AND unit such as 3/7.2/4kilomegagram', function (done) {
+            chai
+                .request(server)
+                .get('/api/convert?input=3/7.2/4kilomegagram')
+                .end(function (err, res) {
+                    assert.equal(res.statusCode, 200);
+                    assert.equal(res.body.initNum, undefined);
+                    assert.equal(res.body.initUnit, undefined);
+                    done();
+                });
+        });
         // Convert with no number such as kg: GET request to /api/convert.
+        test('Convert with no number such as kg', function (done) {
+            chai
+                .request(server)
+                .get('/api/convert?input=kg')
+                .end(function (err, res) {
+                    assert.equal(res.statusCode, 200);
+                    assert.equal(res.body.initNum, 1);
+                    assert.equal(res.body.initUnit, 'kg');
+                    done();
+                });
+        });
     });
 });
