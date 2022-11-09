@@ -27,7 +27,9 @@ function ConvertHandler() {
     let num2 = nums[1] || "1";
 
     result = parseFloat(num1) / parseFloat(num2);
-
+    if (Math.round(result) !== result) {
+      result = result.toFixed(5);
+    }
     if (isNaN(num1) || isNaN(num2)) {
       return undefined;
     }
