@@ -8,9 +8,7 @@ function fractionHandler(input) {
 
 function splitNumUnit(input) {
   let num = input.match(/[.\d\/]+/g) || ["1"];
-  console.log("num", num);
   let str = input.match(/[a-zA-Z]+/g) || [""];
-  console.log("str", str);
   return [num[0], str[0]];
 }
 
@@ -27,9 +25,7 @@ function ConvertHandler() {
     let num2 = nums[1] || "1";
 
     result = parseFloat(num1) / parseFloat(num2);
-    if (Math.round(result) !== result) {
-      result = result.toFixed(5);
-    }
+
     if (isNaN(num1) || isNaN(num2)) {
       return undefined;
     }
@@ -137,7 +133,7 @@ function ConvertHandler() {
       default:
         result = undefined;
     }
-    return result;
+    return parseFloat(result);
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {

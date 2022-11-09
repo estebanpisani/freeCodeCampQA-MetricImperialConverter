@@ -21,13 +21,13 @@ suite('Unit Tests', function () {
         // convertHandler should correctly read a fractional input.
         test('Read fractional input', function (done) {
             let input = '2/7';
-            assert.equal(convertHandler.getNum(input), (2/7).toFixed(5));
+            assert.equal(convertHandler.getNum(input), 2/7);
             done();
         });
         // convertHandler should correctly read a fractional input with a decimal.
         test('Read fractional input w/decimal', function (done) {
             let input = '2/7.5';
-            assert.equal(convertHandler.getNum(input), (2/7.5).toFixed(5));
+            assert.equal(convertHandler.getNum(input), 2/7.5);
             done();
         });
         // convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).
