@@ -21,7 +21,7 @@ suite('Unit Tests', function () {
         // convertHandler should correctly read a fractional input.
         test('Read fractional input', function (done) {
             let input = '2/7';
-            assert.equal(convertHandler.getNum(input), 2 / 7);
+            assert.equal(convertHandler.getNum(input), 2/7);
             done();
         });
         // convertHandler should correctly read a fractional input with a decimal.

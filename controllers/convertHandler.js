@@ -1,49 +1,56 @@
 function fractionHandler(input) {
   let numbers = input.split('/');
-  if (numbers.length < 2) {
-    return null;
-  } else if (numbers.length > 2) {
+  if (numbers.length > 2) {
     return false;
   }
   return numbers;
 }
 
+function splitNumUnit(input) {
+  let num = input.match(/[.\d\/]+/g) || ["1"];
+  console.log("num", num);
+  let str = input.match(/[a-zA-Z]+/g) || [""];
+  console.log("str", str);
+  return [num[0], str[0]];
+}
+
 function ConvertHandler() {
 
   this.getNum = function (input) {
-    let result;
-    if (fractionHandler(input) === null) {
-      result = parseFloat(input) || 1;
-    } else if (!fractionHandler(input)) {
-      result = undefined;
-    } else {
-      result = parseFloat(fractionHandler(input)[0])/parseFloat(fractionHandler(input)[1]);
+    let result = splitNumUnit(input)[0];
+
+    let nums = fractionHandler(result);
+    if (!nums) {
+      return undefined;
     }
-    // console.log(result);
+    let num1 = nums[0];
+    let num2 = nums[1] || "1";
+
+    result = parseFloat(num1) / parseFloat(num2);
+
+    if (isNaN(num1) || isNaN(num2)) {
+      return undefined;
+    }
     return result;
   };
 
   this.getUnit = function (input) {
-    let result;
-    let inputSplit = fractionHandler(input);
-    console.log('split',inputSplit);
-    if (inputSplit){
-      result = inputSplit[1].replace(parseFloat(inputSplit[1]).toString(), '').toLowerCase();
-      if(result==='l'){
-        result = 'L';
-      }
-    }
-    else {
-      result = input.replace(parseFloat(input).toString(), '').toLowerCase();
-      console.log('result' ,result);
-      if(result==='l'){
-        result = 'L';
-      }
-    }
-    if (result == "km" || result == 'gal' || result == 'L' || result == 'lbs' || result == 'kg' || result == 'mi' || result == 'km'){
-      return result;
-    } else {
-      return null;
+    let result = splitNumUnit(input)[1].toLowerCase();
+    switch (result) {
+      case "km":
+        return "km";
+      case "gal":
+        return "gal";
+      case "lbs":
+        return "lbs";
+      case "mi":
+        return "mi";
+      case "l":
+        return "L";
+      case "kg":
+        return "kg";
+      default:
+        return undefined;
     }
   };
 
